@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import css from './FeedbackOptions.module.css';
 
 export default function FeedbacOptions({ options, onLeaveFeedback }) {
   const buttons = Object.keys(options);
   return (
-    <ul>
+    <ul className={css.list_buttons}>
       {buttons.map(button => (
-        <li key={button}>
+        <li key={button} className={css.list_buttons_item}>
           <button
+            className={css.options_button}
             type="button"
             onClick={() => {
               onLeaveFeedback(button);
@@ -17,21 +19,6 @@ export default function FeedbacOptions({ options, onLeaveFeedback }) {
           </button>
         </li>
       ))}
-      {/* <li>
-        <button type="button" onClick={options.onGood}>
-          Good
-        </button>
-      </li>
-      <li>
-        <button type="button" onClick={options.onNeutral}>
-          Neutral
-        </button>
-      </li>
-      <li>
-        <button type="button" onClick={options.onBad}>
-          Bad
-        </button>
-      </li> */}
     </ul>
   );
 }

@@ -10,22 +10,16 @@ export default class App extends Component {
     neutral: 0,
     bad: 0,
   };
+
   onLeaveFeedback = name => {
     this.setState(prevState => ({ [name]: prevState[name] + 1 }));
   };
-  // goodBtn = () => {
-  //   this.setState(prevState => ({ good: prevState.good + 1 }));
-  // };
-  // neutralBtn = () => {
-  //   this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
-  // };
-  // badBtn = () => {
-  //   this.setState(prevState => ({ bad: prevState.bad + 1 }));
-  // };
+
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
     return good + neutral + bad;
   };
+
   CountPositiveFeedbackPercentage = () => {
     return Math.round((this.state.good * 100) / this.countTotalFeedback());
   };
@@ -37,16 +31,14 @@ export default class App extends Component {
           <FeedbacOptions
             options={this.state}
             onLeaveFeedback={this.onLeaveFeedback}
-            // options={['Good', 'Neutral', 'Bad']}
-            // onGood={this.goodBtn}
-            // onNeutral={this.neutralBtn}
-            // onBad={this.badBtn}
           />
         </Section>
-        {this.good === 0 && this.neutral === 0 && this.bad === 0 ? (
-          <Notification message="There is no feedback" />
-        ) : (
-          <Section>
+        <Section title="Statistics">
+          {this.state.good === 0 &&
+          this.state.neutral === 0 &&
+          this.state.bad === 0 ? (
+            <Notification message="There is no feedback" />
+          ) : (
             <Statistics
               good={this.state.good}
               neutral={this.state.neutral}
@@ -54,8 +46,8 @@ export default class App extends Component {
               total={this.countTotalFeedback()}
               positivePercentage={this.CountPositiveFeedbackPercentage()}
             />
-          </Section>
-        )}
+          )}
+        </Section>
       </div>
     );
   }

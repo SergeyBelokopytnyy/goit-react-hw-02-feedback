@@ -1,0 +1,30 @@
+.options_button {
+  padding: 2px 10px;
+  /* font-weight: bold; */
+  font-size: 15px;
+
+  border: 1px solid rgb(216, 216, 216);
+  border-radius: 5px;
+
+  background-color: rgb(252, 252, 252);
+  cursor: pointer;
+}
+
+.options_button:not(:last-child) {
+  margin-right: 10px;
+}
+
+.options_button:hover,
+.options_button:focus {
+  background-color: rgb(87, 199, 237);
+}
+
+.list_buttons {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.list_buttons_item {
+  margin: 5px;
+}
